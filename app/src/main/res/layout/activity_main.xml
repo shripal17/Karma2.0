@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:padding="16dp"
+  android:keepScreenOn="true"
+  tools:context=".MainActivity">
+
+  <TextView
+    android:id="@+id/propeller_direction_label"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="16dp"
+    android:text="Propeller Direction"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toStartOf="@id/propeller_speed"/>
+  <com.rm.rmswitch.RMSwitch
+    android:id="@+id/propeller_state"
+    android:layout_width="72dp"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="16dp"
+    android:minWidth="48dp"
+    app:checked="false"
+    app:layout_constraintBottom_toTopOf="@id/propeller_direction"
+    app:layout_constraintEnd_toEndOf="@id/propeller_direction"
+    app:layout_constraintStart_toStartOf="@id/propeller_direction"
+    app:switchDesign="slim"
+    app:switchToggleCheckedColor="#3F51B5"
+    app:switchToggleNotCheckedColor="#0C0C0C"/>
+  <com.rm.rmswitch.RMSwitch
+    android:id="@+id/propeller_direction"
+    android:layout_width="72dp"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    android:layout_marginEnd="24dp"
+    android:layout_marginRight="24dp"
+    android:minWidth="64dp"
+    app:checked="true"
+    app:layout_constraintBottom_toTopOf="@id/propeller_direction_label"
+    app:layout_constraintEnd_toStartOf="@id/propeller_speed"
+    app:switchDesign="slim"
+    app:switchToggleCheckedColor="#4CAF50"
+    app:switchToggleCheckedImage="@drawable/ic_arrow_upward_white"
+    app:switchToggleNotCheckedColor="#F44336"
+    app:switchToggleNotCheckedImage="@drawable/ic_arrow_downward_white"/>
+
+  <TextView
+    android:id="@+id/horizontal_motion_label"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Horizontal Direction"
+    app:layout_constraintBaseline_toBaselineOf="@+id/propeller_direction_label"
+    app:layout_constraintEnd_toEndOf="@+id/horizontal_motion"
+    app:layout_constraintStart_toStartOf="@+id/horizontal_motion"/>
+  <com.crystal.crystalrangeseekbar.widgets.CrystalSeekbar
+    android:id="@+id/horizontal_motion"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    app:bar_color="@color/colorPrimary"
+    app:bar_highlight_color="@color/colorPrimaryDark"
+    app:corner_radius="10"
+    app:data_type="_integer"
+    app:layout_constraintBottom_toBottomOf="@id/propeller_direction"
+    app:layout_constraintEnd_toStartOf="@id/guideline"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="@id/propeller_direction"
+    app:max_value="50"
+    app:min_start_value="0"
+    app:min_value="-50"/>
+  <TextView
+    android:id="@+id/horizontal_motion_value"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    android:text="0"
+    android:textColor="@android:color/black"
+    app:layout_constraintBottom_toTopOf="@id/horizontal_motion"
+    app:layout_constraintEnd_toEndOf="@id/horizontal_motion"
+    app:layout_constraintStart_toStartOf="@id/horizontal_motion"/>
+
+  <TextView
+    android:id="@+id/propeller_speed_label"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Propeller Speed"
+    app:layout_constraintBaseline_toBaselineOf="@id/propeller_direction_label"
+    app:layout_constraintEnd_toEndOf="@id/propeller_speed"
+    app:layout_constraintStart_toStartOf="@id/propeller_speed"/>
+  <com.sdsmdg.harjot.crollerTest.Croller
+    android:id="@+id/propeller_speed"
+    android:layout_width="wrap_content"
+    android:layout_height="0dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
+    app:layout_constraintBottom_toTopOf="@id/propeller_speed_label"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/guideline2"/>
+
+  <androidx.constraintlayout.widget.Guideline
+    android:id="@+id/guideline"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:layout_constraintGuide_percent="0.4"/>
+
+  <androidx.constraintlayout.widget.Guideline
+    android:id="@+id/guideline2"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:layout_constraintGuide_percent="0.575"/>
+
+  <androidx.constraintlayout.widget.Guideline
+    android:id="@+id/guideline3"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:layout_constraintGuide_percent="0.15"/>
+
+
+  <TextView
+    android:id="@+id/horizontal_flaps_label"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="16dp"
+    android:text="Horizontal\nFlaps"
+    app:layout_constraintBottom_toTopOf="@id/horizontal_motion_value"
+    app:layout_constraintStart_toStartOf="@id/horizontal_flaps_wrapper"/>
+  <com.h6ah4i.android.widget.verticalseekbar.VerticalSeekBarWrapper
+    android:id="@+id/horizontal_flaps_wrapper"
+    android:layout_width="wrap_content"
+    android:layout_height="0dp"
+    android:layout_marginBottom="8dp"
+    android:layout_marginStart="16dp"
+    app:layout_constraintBottom_toTopOf="@id/horizontal_flaps_label"
+    app:layout_constraintStart_toStartOf="@id/horizontal_motion"
+    app:layout_constraintTop_toTopOf="parent">
+    <com.h6ah4i.android.widget.verticalseekbar.VerticalSeekBar
+      android:id="@+id/horizontal_flaps"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:progress="50"
+      android:splitTrack="false"
+      app:seekBarRotation="CW270"/>
+  </com.h6ah4i.android.widget.verticalseekbar.VerticalSeekBarWrapper>
+  <TextView
+    android:id="@+id/horizontal_flaps_value"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:text="0"
+    android:textColor="@android:color/black"
+    app:layout_constraintBottom_toBottomOf="@id/horizontal_flaps_wrapper"
+    app:layout_constraintStart_toEndOf="@id/horizontal_flaps_wrapper"
+    app:layout_constraintTop_toTopOf="@id/horizontal_flaps_wrapper"/>
+
+
+  <TextView
+    android:id="@+id/pump_speed_label"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Pump Speed"
+    app:layout_constraintBottom_toTopOf="@id/guideline2"
+    app:layout_constraintEnd_toEndOf="@id/pump_speed"
+    app:layout_constraintStart_toStartOf="@id/pump_speed"/>
+  <com.sdsmdg.harjot.crollerTest.Croller
+    android:id="@+id/pump_speed"
+    android:layout_width="wrap_content"
+    android:layout_height="0dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
+    app:layout_constraintBottom_toTopOf="@id/pump_speed_label"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/guideline3"/>
+
+
+  <TextView
+    android:id="@+id/submersible_pump_state_label"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="8dp"
+    android:text="Submersible\nPumps"
+    android:textAlignment="viewEnd"
+    app:layout_constraintBottom_toTopOf="@id/guideline3"
+    app:layout_constraintEnd_toStartOf="@id/submersible_pump_state"
+    app:layout_constraintTop_toTopOf="parent"/>
+  <com.rm.rmswitch.RMSwitch
+    android:id="@+id/submersible_pump_state"
+    android:layout_width="72dp"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="8dp"
+    app:checked="false"
+    app:layout_constraintBottom_toTopOf="@id/guideline3"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:switchDesign="slim"
+    app:switchToggleCheckedColor="#4CAF50"
+    app:switchToggleNotCheckedColor="#F44336"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
