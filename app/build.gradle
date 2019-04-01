@@ -8,7 +8,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.shripal17.karma20"
-        minSdkVersion 16
+        minSdkVersion 19
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -37,4 +37,5 @@ dependencies {
     implementation 'com.sdsmdg.harjot:croller:1.0.7'
     implementation 'com.crystal:crystalrangeseekbar:1.1.3'
     implementation 'io.apptik.widget:multislider:1.3'
+    implementation project(':bluetoothlib')
 }

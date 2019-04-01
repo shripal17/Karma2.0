@@ -28,7 +28,7 @@
     app:layout_constraintEnd_toEndOf="@id/propeller_direction"
     app:layout_constraintStart_toStartOf="@id/propeller_direction"
     app:switchDesign="slim"
-    app:switchToggleCheckedColor="#3F51B5"
+    app:switchToggleCheckedColor="#4CAF50"
     app:switchToggleNotCheckedColor="#0C0C0C"/>
   <com.rm.rmswitch.RMSwitch
     android:id="@+id/propeller_direction"
@@ -55,21 +55,20 @@
     app:layout_constraintBaseline_toBaselineOf="@+id/propeller_direction_label"
     app:layout_constraintEnd_toEndOf="@+id/horizontal_motion"
     app:layout_constraintStart_toStartOf="@+id/horizontal_motion"/>
-  <com.crystal.crystalrangeseekbar.widgets.CrystalSeekbar
+  <io.apptik.widget.MultiSlider
     android:id="@+id/horizontal_motion"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
-    app:bar_color="@color/colorPrimary"
-    app:bar_highlight_color="@color/colorPrimaryDark"
-    app:corner_radius="10"
-    app:data_type="_integer"
     app:layout_constraintBottom_toBottomOf="@id/propeller_direction"
     app:layout_constraintEnd_toStartOf="@id/guideline"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="@id/propeller_direction"
-    app:max_value="50"
-    app:min_start_value="0"
-    app:min_value="-50"/>
+    app:scaleMax="100"
+    app:scaleMin="-100"
+    app:thumbColor="@color/colorPrimary"
+    app:thumbNumber="1"
+    app:thumbValue1="0"
+    app:trackColor="@color/colorPrimaryDark"/>
   <TextView
     android:id="@+id/horizontal_motion_value"
     android:layout_width="wrap_content"
@@ -95,6 +94,7 @@
     android:layout_height="0dp"
     android:layout_marginTop="8dp"
     android:layout_marginBottom="8dp"
+    app:label=""
     app:layout_constraintBottom_toTopOf="@id/propeller_speed_label"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintTop_toBottomOf="@id/guideline2"/>
@@ -134,7 +134,6 @@
     android:layout_width="wrap_content"
     android:layout_height="0dp"
     android:layout_marginBottom="8dp"
-    android:layout_marginStart="16dp"
     app:layout_constraintBottom_toTopOf="@id/horizontal_flaps_label"
     app:layout_constraintStart_toStartOf="@id/horizontal_motion"
     app:layout_constraintTop_toTopOf="parent">
@@ -159,6 +158,28 @@
 
 
   <TextView
+    android:id="@+id/pump_state_label"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Pump State"
+    app:layout_constraintBottom_toTopOf="@id/guideline2"
+    app:layout_constraintEnd_toEndOf="@id/pump_state"
+    app:layout_constraintStart_toStartOf="@id/pump_state"/>
+  <com.rm.rmswitch.RMSwitch
+    android:id="@+id/pump_state"
+    android:layout_width="72dp"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="16dp"
+    android:layout_marginEnd="24dp"
+    android:minWidth="48dp"
+    app:checked="false"
+    app:layout_constraintBottom_toTopOf="@id/pump_state_label"
+    app:layout_constraintEnd_toStartOf="@id/pump_speed"
+    app:switchDesign="slim"
+    app:switchToggleCheckedColor="#4CAF50"
+    app:switchToggleNotCheckedColor="#0C0C0C"/>
+
+  <TextView
     android:id="@+id/pump_speed_label"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -172,6 +193,7 @@
     android:layout_height="0dp"
     android:layout_marginTop="8dp"
     android:layout_marginBottom="8dp"
+    app:label=""
     app:layout_constraintBottom_toTopOf="@id/pump_speed_label"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintTop_toBottomOf="@id/guideline3"/>
@@ -199,4 +221,13 @@
     app:switchDesign="slim"
     app:switchToggleCheckedColor="#4CAF50"
     app:switchToggleNotCheckedColor="#F44336"/>
+
+  <TextView
+    android:id="@+id/sensor_data"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintBottom_toBottomOf="@id/guideline2"
+    app:layout_constraintEnd_toStartOf="@id/pump_speed"
+    app:layout_constraintStart_toEndOf="@id/horizontal_flaps_wrapper"
+    app:layout_constraintTop_toTopOf="@id/guideline3"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
