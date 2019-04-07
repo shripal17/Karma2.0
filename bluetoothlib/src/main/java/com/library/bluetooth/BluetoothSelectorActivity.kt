@@ -222,7 +222,7 @@ class BluetoothSelectorActivity : AppCompatActivity(), LocationEnabledUtil.OnLoc
       ctx.startActivityForResult(i, rc)
     }
 
-    fun parseResult(requestCode: Int, resultCode: Int, data: Intent?): BluetoothDevice? {
+    fun parseResult(resultCode: Int, data: Intent?): BluetoothDevice? {
       var device: BluetoothDevice? = null
       if (resultCode == Activity.RESULT_OK && data != null) {
         device = data.getParcelableExtra(PREF_FILE_NAME)

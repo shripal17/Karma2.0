@@ -7,6 +7,7 @@
   <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
   <application>
-    <activity android:name="com.library.bluetooth.BluetoothSelectorActivity"/>
+    <activity android:name="com.library.bluetooth.BluetoothSelectorActivity"
+      android:screenOrientation="sensorLandscape"/>
   </application>
 </manifest>

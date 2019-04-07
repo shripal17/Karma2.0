@@ -1,6 +1,8 @@
 package com.library.bluetooth
 
 import android.bluetooth.BluetoothAdapter
+import android.bluetooth.BluetoothDevice
+import android.bluetooth.BluetoothSocket
 import android.content.Context
 import org.jetbrains.anko.runOnUiThread
 import java.io.InputStream
@@ -9,21 +11,26 @@ import java.util.*
 
 class BluetoothCommunicator(
   val ctx: Context,
-  address: String,
+  val address: String,
   val onConnectionStatus: (status: Boolean, e: Exception?) -> Unit,
   val onMessageReceived: (message: String) -> Unit,
   val onDeviceDisconnected: () -> Unit
 ) : Thread() {
 
+  val btSocket: BluetoothSocket
+  val device: BluetoothDevice
+  private val adapter: BluetoothAdapter
   private val UUID_WELL_KNOWN_SPP = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB")
-
-  private val adapter = BluetoothAdapter.getDefaultAdapter()
-  private val device = adapter.getRemoteDevice(address)
-  private val btSocket = device.createRfcommSocketToServiceRecord(UUID_WELL_KNOWN_SPP)
   var connected = false
-  private var data: String? = ""
-  private lateinit var inputStream: InputStream
-  private lateinit var outputStream: OutputStream
+  var data: String? = ""
+  lateinit var inputStream: InputStream
+  lateinit var outputStream: OutputStream
+
+  init {
+    adapter = BluetoothAdapter.getDefaultAdapter()
+    device = adapter.getRemoteDevice(address)
+    btSocket = device.createRfcommSocketToServiceRecord(UUID_WELL_KNOWN_SPP)
+  }
 
   override fun run() {
     try {
